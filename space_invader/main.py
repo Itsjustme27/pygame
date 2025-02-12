@@ -1,4 +1,5 @@
 import pygame
+import sys
 import math
 import random
 
@@ -37,6 +38,32 @@ background = pygame.image.load('space.jpg')
 score_font = pygame.font.SysFont("Barron", 30)
 score =0
 
+def get_font(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("Barron.ttf", size)
+
+
+
+def main_menu():
+    pygame.display.set_caption("Menu")
+    menuImg = pygame.image.load('moon.jpg')
+    window.blit(menuImg, (0,0))
+    while True:
+
+        
+
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    run()
+
+        pygame.display.update()
+
+
+
 def draw_score(score, font, text_col, x, y):
     img = font.render(f"score: {score}", True, text_col)
     window.blit(img, (x, y) )
@@ -49,11 +76,11 @@ def enemy(x,y):
     window.blit(enemyImg, (x,y))
 
 def bullet(x, y):
-     window.blit(bulletImg, (x+14, y))
+    window.blit(bulletImg, (x+14, y))
 
 def collision(x1, y1, x2, y2): #enemy cord and bullet cord
     distance = math.sqrt(math.pow(x1-x2,2) + math.pow(y1-y2,2))
-    if distance <=30:
+    if distance <=40:
         return True
     else:
         return False
@@ -61,31 +88,29 @@ def collision(x1, y1, x2, y2): #enemy cord and bullet cord
 #game loop
 running = True
 while running:
-
     window.fill((2, 64, 71))
     window.blit(background, (0,0))    
-
-    
-
     for event in pygame.event.get():
+
+
         if event.type == pygame.QUIT:
             running = False
-        
-        #userinput to manipulate movement
+
+           #userinput to manipulate movement
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                playerX_change = -0.5
+                playerX_change = -0.7
 
-            
+
             if event.key == pygame.K_RIGHT:
-                playerX_change = 0.5 
+                playerX_change = 0.7
 
             if event.key == pygame.K_UP:
-                playerY_change = -0.5
+                playerY_change = -0.7
 
             if event.key == pygame.K_DOWN:
-               
-                playerY_change = 0.5
+
+                playerY_change = 0.7
 
             if event.key == pygame.K_SPACE:
                 bullet_state = "fire"
@@ -93,17 +118,17 @@ while running:
                 bulletY_change = -1
 
         if event.type == pygame.KEYUP:
-            playerX_change = 0
-            playerY_change = 0
+                playerX_change = 0
+                playerY_change = 0
 
 
 
-   
+
     #make sure the ship doesn't go beyond boundary
     if playerX <=0:
-        playerX = 0
+        playerX =  900
     if playerX >= 925:
-        playerX = 925
+        playerX = 0
     if playerY <= 400:
         playerY = 400
     if playerY >= 700:
@@ -117,7 +142,7 @@ while running:
         enemyX_change = 0.5
         enemyY = random.randint(0, 300)
 
-        
+
 
     enemyX += enemyX_change
     playerY += playerY_change
@@ -128,7 +153,7 @@ while running:
     if bullet_state == "fire":
         bullet(bulletX, bulletY)
 
-        
+
 
     player(playerX, playerY) # drawn only after fill so as to be on top of screen
     enemy(enemyX, enemyY) 
@@ -140,9 +165,10 @@ while running:
         enemyX = random.randint(0, 900)
         enemyY = random.randint(0, 400)
         score+=1
-       
+
     draw_score(score, score_font, (255,255,255), 850, 750)
 
 
 
     pygame.display.update()
+
