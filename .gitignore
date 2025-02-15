@@ -2,6 +2,4 @@ platformer/
 physics/
 test.py
 platformer/
-physics/
 test.py
-.gitignore
