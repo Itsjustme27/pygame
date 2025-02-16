@@ -78,10 +78,14 @@ while running:
                 angle_change = 0
 
 
-    if puffy.x_pos > 475:
+    if puffy.x_pos > 475 and puffy.y_pos == 300: #fall off the first log
         y_pos_change = 4
-    if puffy.y_pos >=  500:
+    if puffy.y_pos ==  500:
         y_pos_change = 0
+
+       
+    if puffy.x_pos < 380 and puffy.y_pos == 500:  # fall off the second log
+        y_pos_change = 4
 
 
 
