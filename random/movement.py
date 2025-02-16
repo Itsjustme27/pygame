@@ -8,7 +8,7 @@ width = 1000
 height = 800
  
 window = pygame.display.set_mode((width, height))
-bg_color = ['red', 'blue', 'green', 'black', 'pink', 'purple']
+bg_color = ['white', 'black']
 
 class triangle:
     def __init__(self, color, x_speed, y_speed, x1, y1, x2, y2, x3, y3):
@@ -36,7 +36,12 @@ class triangle:
 
 #game variables
 color = "white"
-triangle1 = triangle("white", 0, 0, 23,34,456,324,841,341)
+triangle1 = triangle("white", 0, 0, 100,100,500,100,100,400)
+triangle2 = triangle("black", 0, 0, 500,100,900,100,900,400)
+triangle3 = triangle("black", 0, 0, 100,400,100,700,500,700)
+triangle4 = triangle("white", 0, 0, 900,400,900,700,500,700)
+triangle5 = triangle("white", 0, 0, 300,400,700,400,500,300)
+triangle6 = triangle("black", 0, 0, 300,400,700,400,500,500)
 
 
 #main loop
@@ -62,6 +67,11 @@ while running:
     triangle1.update()
 
     triangle1.draw()
+    triangle2.draw()
+    triangle3.draw()
+    triangle4.draw()
+    triangle5.draw()
+    triangle6.draw()
 
     pygame.display.flip()
 
