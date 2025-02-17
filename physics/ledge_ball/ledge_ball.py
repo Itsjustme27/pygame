@@ -61,12 +61,12 @@ while running:
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
-                x_pos_change = 0.6
-                angle_change = -0.6                
+                x_pos_change = 2.5 
+                angle_change = -2.5                
                 
             if event.key == pygame.K_a:
-                x_pos_change = -0.6
-                angle_change = 0.6
+                x_pos_change = -2.5
+                angle_change = 2.5
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_d:
