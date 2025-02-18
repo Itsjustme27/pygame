@@ -35,6 +35,10 @@ class LEDGE:
     def draw(self):
         trans_ledge = pygame.transform.rotozoom(ledge, self.angle, self.scale)
         window.blit(trans_ledge, (self.x_pos, self.y_pos))
+
+#music
+music = pygame.mixer.music.load('ledgeballmusic.wav')
+pygame.mixer.music.play(-1)
     
 
 #game variables
