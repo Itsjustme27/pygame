@@ -37,7 +37,7 @@ class LEDGE:
         window.blit(trans_ledge, (self.x_pos, self.y_pos))
 
 #music
-music = pygame.mixer.music.load('ledgeballmusic.wav')
+music = pygame.mixer.music.load('ballmusic.mp3')
 pygame.mixer.music.play(-1)
     
 
