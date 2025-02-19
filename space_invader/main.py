@@ -86,17 +86,17 @@ def collision(x1, y1, x2, y2): #enemy cord and bullet cord
         return False
 
 #game loop
-running = True
-while running:
+run = True 
+while run:
     window.fill((2, 64, 71))
     window.blit(background, (0,0))    
     for event in pygame.event.get():
 
 
         if event.type == pygame.QUIT:
-            running = False
+            run = False
 
-           #userinput to manipulate movement
+        #userinput to manipulate movement
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == pygame.K_a:
                 playerX_change = -0.7
@@ -118,8 +118,8 @@ while running:
                 bulletY_change = -1
 
         if event.type == pygame.KEYUP:
-                playerX_change = 0
-                playerY_change = 0
+            playerX_change = 0
+            playerY_change = 0
 
 
 
